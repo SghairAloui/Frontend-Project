@@ -1,0 +1,115 @@
+
+html,body{
+    background-color: var(--background-color);
+    transition: all .3s ease-in-out;
+    font-family: 'Raleway', sans-serif;
+}
+/*about Us*/
+.ContactUs{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    "title title title"
+    "mail phone position";
+    background-color: #333333;
+    padding: 3% 5%;
+    color: white;
+}
+.ContactUs .ContactUsTitle{
+    grid-area: title;
+    text-align: center;
+    font-size: 2.5rem;
+    padding-bottom:3%;
+}
+.ContactUs .ContactUsMail{
+    position: relative;
+    grid-area: mail;
+    text-align: center;
+    border-right: 1px solid white;
+}
+.ContactUs .ContactUsPhone{
+    grid-area: phone;
+    text-align: center;
+    border-right: 1px solid white;
+}
+.ContactUs .ContactUsPosition{
+    grid-area: position;
+    text-align: center;
+}
+.ContactUsIcon{
+    height: auto;
+    width: auto;
+    position: relative;
+    padding-bottom: 5%;
+    color: white;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+}
+.aboutUstitle{
+    color: var(--text-color);
+    font-size: 4vw;
+    text-align: right;
+    text-align: center;
+    padding-top: 5%;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 900;
+    padding-bottom: 3%;
+    transition: all .3s ease-in-out;
+}
+.aboutUsText{
+    color: var(--text-color);
+    position: relative;
+    padding-left: 10%;
+    width: 80%;
+    font-size: 1rem;
+    padding-bottom: 3%;
+    transition: all .3s ease-in-out;
+}
+/* Slider*/
+#slider{
+    overflow: hidden;
+}
+#slider figure{
+    top: 0%;
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 20s slider infinite;
+}
+#slider figure img{
+    width: 20%;
+    float: left;
+}
+@keyframes slider{
+    0%{
+        left: 0%;
+    }
+    20%{
+        left: 0%;
+    }
+    25%{
+        left: -100%;
+    }
+    45%{
+        left: -100%;
+    }
+    50%{
+        left: -200%;
+    }
+    70%{
+        left: -200%;
+    }
+    75%{
+        left: -300%;
+    }
+    95%{
+        left: -300%;
+    }
+    100%{
+        left: -400%;
+    }
+}
+
