@@ -7,10 +7,14 @@ import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './products/products.module';
 import { CartsModule } from './carts/carts.module';
 import { HomeModule } from './home/home.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -18,7 +22,9 @@ import { HomeModule } from './home/home.module';
     SharedModule,
     ProductsModule,
     CartsModule,
-    HomeModule
+    HomeModule,
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -46,4 +46,80 @@
     </table>
     
 </div>
-<div class="alert alert-success" role="alert" *ngIf="success"><strong>Well done!</strong> Your Order is Successfully Send</div>
+<div class="alert alert-success" role="alert" *ngIf="success"><strong>Well done!</strong> Your Order is Successfully Send
+    <br><br>
+    <form class="payment-form" id="container" (ngSubmit)="saveData(registreForm)" #registreForm="ngForm">
+        <h1>PAIEMENT EN LIGNE</h1>
+        <h3>Please Enter Your Valide Contact Details</h3>
+        <br><br>
+        <label for="cardNumber" class="form-label"><strong>Numéro de carte :</strong></label>
+        <input type="text" id="cardNumber" name="cardNumber" class="form-input" placeholder="1234567890123" required [(ngModel)]="user.cardNumber" 
+        ngModel name ="CardNumber"
+        #CardNumber="ngModel"
+        required
+        minlength="5"
+        maxlength="12">
+        <div class="alert alert-danger" *ngIf="CardNumber.touched && !CardNumber.valid">
+            <div *ngIf="CardNumber.errors && CardNumber.errors['required']">required</div>
+            <div *ngIf="CardNumber.errors && CardNumber.errors['minlength']">
+                minimum 5 caractères
+              </div>
+              <div *ngIf="CardNumber.errors && CardNumber.errors['maxlength']">
+                maximum 12 caractères
+              </div>
+
+        </div> 
+    
+        <label for="expiryDate" class="form-label"><strong>Date d'expiration :</strong></label>
+        <input type="text" id="expiryDate" name="expiryDate" class="form-input" placeholder="MM/YY" required [(ngModel)]="user.expiryDate"
+        ngModel name ="expiryDate"
+        #expiryDate="ngModel"
+        required
+        minlength="5"
+        maxlength="5">
+        <div class="alert alert-danger" *ngIf="expiryDate.touched && !expiryDate.valid">
+            <div *ngIf="expiryDate.errors && expiryDate.errors['required']">required</div>
+            <div *ngIf="expiryDate.errors && expiryDate.errors['minlength']">
+                date AA/MM
+              </div>
+              <div *ngIf="expiryDate.errors && expiryDate.errors['maxlength']">
+                date AA/MM
+
+            </div>
+              </div>
+    
+        <label for="cvv" class="form-label"><strong>CVV :</strong></label>
+        <input type="text" id="cvv" name="cvv" class="form-input" placeholder="123" required [(ngModel)]="user.cvv"
+        ngModel name ="CVV"
+        #CVV="ngModel"
+        required
+        minlength="3"
+        maxlength="3">
+        <div class="alert alert-danger" *ngIf="CVV.touched && !CVV.valid">
+            <div *ngIf="CVV.errors && CVV.errors['required']">required</div>
+            <div *ngIf="CVV.errors && CVV.errors['minlength']">
+                minimum 3 caractères
+              </div>
+              <div *ngIf="CVV.errors && CVV.errors['maxlength']">
+                maximum 3 caractères
+              </div>
+              </div>
+    <br>
+        <button type="submit" class="form-button" (click)="showSuccessMessagee()">Payer</button>
+    </form>
+    <br>
+
+</div>
+<div class="alert alert-success" role="alert" *ngIf="successs"> Your Payement is Successfully 
+</div>
+<!--<div *ngIf="showSuccessMessage" class="success-message">
+    <p>Votre paiement a été effectué avec succès!</p>
+  </div>
+  
+  <div *ngIf="showFailureMessage" class="failure-message">
+    <p>Échec du paiement. Veuillez vérifier les informations de la carte.</p>
+  </div>-->
+
+
+
+<br><br><br><br>

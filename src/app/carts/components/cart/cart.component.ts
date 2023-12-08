@@ -1,5 +1,7 @@
 import { Component , OnInit  } from '@angular/core';
 import { CartsService } from '../../services/carts.service';
+import { user } from '../../models/user';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -8,13 +10,29 @@ import { CartsService } from '../../services/carts.service';
 })
 export class CartComponent implements OnInit{
 
+  public user : user = new user();
+
+  /*paymentForm: FormGroup;
+  /*showSuccessMessage: boolean = true;
+  showFailureMessage: boolean = false;*/
+
+  
+  successs = false;
   CartProducts : any[]=[]
   total : any = 0
   success:boolean = false
 
-  constructor(private service:CartsService){
+  constructor(private service:CartsService , private fb: FormBuilder){
+
+    /*this.paymentForm = this.fb.group({
+      cardNumber: ['', [Validators.required]],
+      expiryDate: ['', [Validators.required]],
+      cvv: ['', [Validators.required]]
+    });*/
+    
 
   }
+  
 
   ngOnInit(): void {
   this.getCartProducts()
@@ -85,4 +103,24 @@ addCart() {
 
    console.log(Model)
  }
-} 
+
+ public saveData(registreForm: NgForm){
+  console.log('valeurs: ' , JSON.stringify(registreForm.value));
+  console.log(registreForm.form); 
+
+ }
+ 
+
+  showSuccessMessagee(): void {
+    this.successs = true;
+    /*if (this.paymentForm.valid) {
+      // Simulate a successful submission
+      this.showSuccessMessage = true;
+      this.showFailureMessage = false;
+    } else {
+      // Simulate a failed submission
+      this.showSuccessMessage = false;
+      this.showFailureMessage = true;
+    }
+  }*/
+  }}

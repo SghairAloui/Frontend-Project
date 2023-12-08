@@ -50,3 +50,69 @@ img {
   height: 80px;
   border-radius: 50%;
 }
+
+
+
+.payment-form {
+  
+  top: 50%;
+  left: 50%;
+  transform: translate(-0%, -0%);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  width: 1265px;
+  z-index: 2;
+  text-align: center;
+}
+
+#container{
+  border: 2px solid black;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.form-input {
+  width: 30%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+}
+
+.form-button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: #0f7d14;
+}
+
+.success-message {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+}
+
+/*.success-message {
+  margin-top: 20px;
+  color: green;
+}
+
+.failure-message {
+  margin-top: 20px;
+  color: red;
+}*/
