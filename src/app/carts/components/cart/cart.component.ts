@@ -1,7 +1,9 @@
 import { Component , OnInit  } from '@angular/core';
 import { CartsService } from '../../services/carts.service';
-import { user } from '../../models/user';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Role, User } from 'src/app/login/model/user.model';
+import { Order } from 'src/app/products/models/order';
+import { Product } from 'src/app/products/models/product';
 
 @Component({
   selector: 'app-cart',
@@ -9,9 +11,21 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit{
-
-  public user : user = new user();
-
+  currentUser: User | null = null; // Déclarez la propriété currentUser
+  newUser: User = {
+    id:0,
+    nom: ' ',
+    prenom: ' ',
+    address: ' ',
+    numTelephone: ' ',
+    role:Role.CLIENT,
+          email: ' ',
+          cardNumber:0,
+          expiryDate:0,
+          cvv:0
+  };
+ 
+ 
   /*paymentForm: FormGroup;
   /*showSuccessMessage: boolean = true;
   showFailureMessage: boolean = false;*/
@@ -21,8 +35,25 @@ export class CartComponent implements OnInit{
   CartProducts : any[]=[]
   total : any = 0
   success:boolean = false
+  saveUserToLocalStorage(newUser: User) {
+    const userJSON = JSON.stringify(newUser);
+    localStorage.setItem('currentUser', userJSON);
+  }
 
+  getUserFromLocalStorage() {
+    const storedUserJSON = localStorage.getItem('currentUser');
+
+    if (storedUserJSON !== null) {
+      const currentUser = JSON.parse(storedUserJSON);
+      this.currentUser = currentUser; // Affectez l'utilisateur actuel à la propriété de votre composant
+      console.log('Current User:', currentUser);
+    } else {
+      console.log('No user data found');
+    }
+  }
+   
   constructor(private service:CartsService , private fb: FormBuilder){
+  
 
     /*this.paymentForm = this.fb.group({
       cardNumber: ['', [Validators.required]],
@@ -35,6 +66,7 @@ export class CartComponent implements OnInit{
   
 
   ngOnInit(): void {
+    this.getUserFromLocalStorage(); 
   this.getCartProducts()
     
 
@@ -44,7 +76,7 @@ getCartProducts(){
 
   if("cart" in localStorage){
     this.CartProducts = JSON.parse(localStorage.getItem("cart")!)
-
+    console.log(this.CartProducts);
 }
 this.getCartTotal()
 
@@ -87,22 +119,41 @@ clearCart() {
 }
 
 addCart() {
-  let products = this.CartProducts.map(item => {
-   return {productId:item.item.id , quantity:item.quantity}
-  })
+  console.log(this.CartProducts);
+  console.log(this.currentUser);
+   let products: Product[] = this.CartProducts.map(item => {
+     return {
+      id: item.item.id, // Replace with the correct property names from your 'item'
+      title:  item.item.title, // Replace with the appropriate value from 'item'
+      price: item.item.price, // Replace with the appropriate value from 'item'
+      category:  item.item.category,
+      description: item.item.description,
+      image:  item.item.image,
+      quantite:item.quantity
+       
+    };
+  }) 
 
-   let Model = {
-     userId:5,
-     date: new Date(),
-     products:products
-   }
+  if (this.currentUser) {
+    const order: Order = {
+      id: 1, // ID de la commande
+      user: this.currentUser,
+      products: products,
+      totalAmount:this.total, // Montant total de la commande
+      status: 'Pending', // Statut initial de la commande
+      orderDate: new Date() // Date de la commande actuelle
+      // Autres détails de la commande
+    };
+    
 
-   this.service.createNewCart(Model).subscribe(res => {
+   this.service.createNewCart(order).subscribe(res => {
      this.success = true
    })
 
-   console.log(Model)
- }
+   console.log(order)
+ } 
+}
+
 
  public saveData(registreForm: NgForm){
   console.log('valeurs: ' , JSON.stringify(registreForm.value));

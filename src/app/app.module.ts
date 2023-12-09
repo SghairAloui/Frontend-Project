@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from './login/login.module';
+import { DashboradModule } from './dashborad/dashborad.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { LoginModule } from './login/login.module';
     HomeModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DashboradModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,19 +1,31 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+      "nom": "Ilyess",
+      "prenom":"BenALi",
+      "address":"Douz_Kebili,Tunisie",
+      "numTelephone": "27330975",
+      "role":"client",
+      "email": "ilyess.benali@isima.u-monastir.tn"
+     },{
+     "id":2,
+     "nom": "Mouhamed Aloui ",
+     "prenom":"Sghair",
+     "address":"Rgeb_Sidibouzid,Tunisie",
+     "numTelephone": "50303224",
+     "role":"client",
+     "email": "aloui.sghair@gmail.com"
+     },
+     {
+      "id":3,
+      "nom": "admin",
+      "prenom":"admin",
+      "address":"Admin,Tunisie",
+      "numTelephone": "123456789",
+      "role":"admin",
+      "email": "admin123@admin.com"
+      }
+
+   ]
 }

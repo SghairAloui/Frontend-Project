@@ -12,5 +12,8 @@ export enum Role {
     numTelephone: string;
     role: Role; // Utilisation de l'enum Role pour le champ role
     email: string;
+    cardNumber: number | null;
+    expiryDate: number | null;
+    cvv: number | null;
   }
   

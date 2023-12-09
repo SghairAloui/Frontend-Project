@@ -53,7 +53,7 @@
         <h3>Please Enter Your Valide Contact Details</h3>
         <br><br>
         <label for="cardNumber" class="form-label"><strong>Numéro de carte :</strong></label>
-        <input type="text" id="cardNumber" name="cardNumber" class="form-input" placeholder="1234567890123" required [(ngModel)]="user.cardNumber" 
+        <input type="text" id="cardNumber" name="cardNumber" class="form-input" placeholder="1234567890123" required [(ngModel)]="newUser.cardNumber" 
         ngModel name ="CardNumber"
         #CardNumber="ngModel"
         required
@@ -71,7 +71,7 @@
         </div> 
     
         <label for="expiryDate" class="form-label"><strong>Date d'expiration :</strong></label>
-        <input type="text" id="expiryDate" name="expiryDate" class="form-input" placeholder="MM/YY" required [(ngModel)]="user.expiryDate"
+        <input type="text" id="expiryDate" name="expiryDate" class="form-input" placeholder="MM/YY" required [(ngModel)]="newUser.expiryDate"
         ngModel name ="expiryDate"
         #expiryDate="ngModel"
         required
@@ -89,7 +89,7 @@
               </div>
     
         <label for="cvv" class="form-label"><strong>CVV :</strong></label>
-        <input type="text" id="cvv" name="cvv" class="form-input" placeholder="123" required [(ngModel)]="user.cvv"
+        <input type="text" id="cvv" name="cvv" class="form-input" placeholder="123" required [(ngModel)]="newUser.cvv"
         ngModel name ="CVV"
         #CVV="ngModel"
         required

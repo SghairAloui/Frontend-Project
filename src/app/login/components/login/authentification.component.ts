@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/authentificationservice';
 import { Role, User } from '../../model/user.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
- 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-authentification',
   templateUrl: './authentification.component.html',
@@ -10,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AuthentificationComponent {
   loginForm: FormGroup;
+  isLoginSuccess = false; // Variable pour déterminer si l'alerte de connexion réussie doit être affichée
 
     newUser: User = {
     id:0,
@@ -18,14 +20,18 @@ export class AuthentificationComponent {
     address: ' ',
     numTelephone: ' ',
     role:Role.CLIENT,
-          email: ' '
+          email: ' ',
+          cardNumber:0,
+          expiryDate:0,
+          cvv:0
+
   };
   
  
 // Définir un FormGroup avec les validateurs nécessaires
 
  
-constructor(private authService: AuthService ,private formBuilder: FormBuilder) {
+constructor(private router: Router,private authService: AuthService ,private formBuilder: FormBuilder) {
   this.loginForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
@@ -41,6 +47,10 @@ constructor(private authService: AuthService ,private formBuilder: FormBuilder) 
     .subscribe((isAuthenticated) => {
       if (isAuthenticated) {
           console.log('Connexion réussie', emailValue);
+          this.isLoginSuccess = true; // Activer l'alerte de connexion réussie
+
+          alert('Connexion réussie ! Redirection vers la page d\'accueil.');
+            this.router.navigate(['/home']); // Assurez-vous d'avoir défini la route vers la page Home
            // Gérer la connexion réussie
       } 
       else {

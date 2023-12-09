@@ -5,18 +5,20 @@ import { ProductsDetailsComponent } from './products/components/products-details
 import { CartComponent } from './carts/components/cart/cart.component';
 import { HomeComponent } from './home/components/home/home.component';
 import { AuthentificationComponent } from './login/components/login/authentification.component';
+import { DashboradComponent } from './dashborad/dashborad_home/dashborad/dashborad.component';
 
 const routes: Routes = [
-  {path:"products" , component:AllProductsComponent},
-  {path:"details/:id" , component:ProductsDetailsComponent},
-  {path:'cart' , component:CartComponent},
-  {path:"home" , component:HomeComponent},
-  {path:"login" , component:AuthentificationComponent},
-
-
-  {path:"**", redirectTo:"home" , pathMatch:"full"}
-
+  { path: 'products', component: AllProductsComponent },
+  { path: 'dashborad', component: DashboradComponent },
+  { path: 'details/:id', component: ProductsDetailsComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' }, // Redirection par défaut vers login
+  { path: 'login', component: AuthentificationComponent },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' } // Redirection pour tout autre chemin non défini
 ];
+
+export default routes;
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

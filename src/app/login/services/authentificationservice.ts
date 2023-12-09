@@ -31,6 +31,10 @@ export class AuthService {
         map((users: User[]) => {
             const userFound = users.find(user => user.email === email && user.numTelephone === numTelephone);
             console.log(userFound);
+            if (userFound) {
+                // Enregistrer l'utilisateur connecté dans le stockage local
+                localStorage.setItem('currentUser', JSON.stringify(userFound));
+              }
             return !!userFound; // Renvoie true si l'utilisateur est trouvé, sinon false
         })
     );

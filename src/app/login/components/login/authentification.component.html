@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-     <title>Modern Login Page | AsmrProg</title>
+     <title>Modern Login Page  </title>
 </head>
 
 <body>
@@ -67,7 +67,9 @@
             </div>
         </div>
     </div>
-
+    <div *ngIf="isLoginSuccess" class="alert alert-success" role="alert">
+        Connexion réussie ! Redirection vers la page d'accueil.
+      </div>
     <script src="script.js"></script>
 </body>
 
