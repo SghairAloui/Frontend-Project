@@ -135,24 +135,36 @@ addCart() {
   }) 
 
   if (this.currentUser) {
-    const order: Order = {
-      id: 1, // ID de la commande
-      user: this.currentUser,
-      products: products,
-      totalAmount:this.total, // Montant total de la commande
-      status: 'Pending', // Statut initial de la commande
-      orderDate: new Date() // Date de la commande actuelle
-      // Autres détails de la commande
-    };
-    
+    const order = new Order(
+        this.currentUser,
+        products,
+       this.total,  
+        'Pending', // Statut initial de la commande
+        new Date()  
+       );
+       console.log(order);
+       this.service.createNewCart(order).subscribe(res => {
+        this.success = true
+      })
+ 
+    this.service.saveOrder(order).subscribe(
+      (response) => {
+        this.success = true
 
-   this.service.createNewCart(order).subscribe(res => {
-     this.success = true
-   })
+        console.log('Commande enregistrée avec succès', response);
+        // Gérer la réponse ou le comportement après l'enregistrement
+      },
+      (error) => {
+        console.error('Erreur lors de l\'enregistrement de la commande', error);
+        // Gérer les erreurs enregistrées lors de la sauvegarde
+      }
+    );
+  }
 
-   console.log(order)
- } 
-}
+
+
+  } 
+
 
 
  public saveData(registreForm: NgForm){

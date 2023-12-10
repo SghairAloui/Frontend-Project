@@ -8,4 +8,13 @@ export interface Order {
   totalAmount: number;
   status: string;
   orderDate: Date;  
- }
+}
+export class Order implements Order {
+  constructor(
+    public user: User,
+    public products: Product[],
+    public totalAmount: number,
+    public status: string,
+    public orderDate: Date
+  ) {}
+}

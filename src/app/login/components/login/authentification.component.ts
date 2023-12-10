@@ -50,20 +50,43 @@ constructor(private router: Router,private authService: AuthService ,private for
           this.isLoginSuccess = true; // Activer l'alerte de connexion réussie
 
           alert('Connexion réussie ! Redirection vers la page d\'accueil.');
-            this.router.navigate(['/home']); // Assurez-vous d'avoir défini la route vers la page Home
+          this.authService.getUserByEmailOrPhone(emailValue, passwordvalue).subscribe((data: User[]) => {
+              
+                if (data && data.length > 0) {
+                   console.log('User:', data[0]); // Affiche l'objet utilisateur
+                  console.log('User ID:', data[0].id); // Accédez à la propriété 'id' de l'objet utilisateur
+              
+                  localStorage.setItem('currentUser', JSON.stringify(data[0])); // Enregistrez l'utilisateur connecté dans le stockage local
+
+          
+            
+             console.log("role" , data[0].role);
+
+            if (data[0].role== "admin") {
+              this.router.navigate(['/admin']); // Assurez-vous d'avoir défini la route vers la page Home
+            }
+             else  {
+                    this.router.navigate(['/home']); // Rediriger vers la page d'administration pour le rôle admin
+            } 
+          }
            // Gérer la connexion réussie
-      } 
-      else {
-          console.log('Échec de connexion', emailValue);
-          // Gérer l'échec de connexion
-      }
+          });
+        }
+      
     
-     });
-    } else {
+      
+    
+    else {
+      console.log('Échec de connexion', emailValue);
+           }});
+
+          }
+     else {
       console.log('Veuillez remplir correctement le formulaire.');
     }
- 
   }
+  
+  
   
   
 

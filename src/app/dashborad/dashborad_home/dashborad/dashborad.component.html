@@ -23,11 +23,10 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-center align-items-center vh-100">
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="position-sticky">
                 <ul class="nav flex-column">
-
                     <li class="nav-item">
                       <a class="nav-link" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -37,54 +36,53 @@
                   </ul>
             </div>
         </nav>
-        <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-
-            <h1 class="h2">Lists Orders</h1>
-
-            <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-lg-0">
-                    <div class="card">
-                        <h5 class="card-header">Latest Orders</h5>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                      <tr>
-                                        <th scope="col">OrderID</th>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Customer</th>
-                                        <th scope="col">Total</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col"></th>
-                                      </tr>
-
-                                    </thead>
-                                    <tbody>
-                                    <!-- Vos lignes de données ici -->
-                                    <tr>
-                                        <td>Order ID</td>
-                                        <td>Product</td>
-                                        <td>Customer</td>
-                                        <td>Total</td>
-                                        <td>Date</td>
-                                        <td> <!-- Colonne pour les boutons -->
-                                            <button class="btn btn-success" [style]="{ 'margin-right': '.5em' }">
-                                                <i class="bi bi-check-circle-fill"></i>
-                                            </button>
-                                            <button class="btn btn-warning">
-                                                <i class="bi bi-file-earmark-x-fill"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <!-- Autres lignes de données -->
-                                    </tbody>
-                                </table>
-                            </div>
-                         </div>
+        <div class="col-md-8">
+            <div class="card">
+                <h5 class="card-header">Latest Orders</h5>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">OrderID</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Date</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let order of orders">
+                                    <td>{{ order.id }}</td>
+                                    <td>
+                                        <ul>
+                                            <li *ngFor="let product of order.products">
+                                              <span class="product-title">{{ product.title }}</span><br> - Quantity: <span class="quantity" style="color:red;"  >{{ product.quantite }}</span>
+                                            </li>
+                                          </ul>
+                                    </td>
+                                    <td>{{ order.user.nom }} &nbsp;{{ order.user.prenom }}</td>
+                                    <td>{{ order.totalAmount | number: '1.2-2' }}</td>
+                                    <td>{{ order.orderDate | date: 'yyyy-MM-dd HH:mm:ss' }}
+                                    </td>
+                                   
+                                  
+                                <td>
+                                    <button type="button" class="btn btn-link btn-lg btn-rounded text-success" >
+                                        <i class="fas fa-check"></i>
+                                      </button>
+                                    <button type="button" class="btn btn-link btn-lg btn-rounded text-danger" >
+                                        <i class="fas fa-trash"></i>
+                                      </button>
+                                               
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                     </div>
                 </div>
-
             </div>
-        </main>
+        </div>
     </div>
 </div>
