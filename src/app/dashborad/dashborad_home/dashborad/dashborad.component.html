@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light p-3">
+<nav class="navbar navbar-light bg-light p-2">
     <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
         <a class="navbar-brand" href="#">
             Admin Dashboard
@@ -10,36 +10,35 @@
     <div class="col-12 col-md-4 col-lg-2">
         <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
     </div>
-    <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
-
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-              Hello, Admin
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-               <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
-          </div>
-    </div>
+  
 </nav>
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center vh-100">
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <nav id="sidebar" class="col-md-2 col-lg-2 d-md-block bg-light sidebar collapse ml-2">
+
             <div class="position-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        <span class="ml-2">Customers</span>
-                      </a>
+                        <button type="button" class="btn btn-primary" (click)="goToUsersList()">
+                            <i class="fas fa-users"></i> Users  <!-- Icône d'utilisateurs Font Awesome avec le texte "Users List" -->
+                          </button>
+                          
                     </li>
+                    <BR>
+                    <li><button type="button" class="btn btn-danger" (click)="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout <!-- Icône de déconnexion Font Awesome avec le texte "Logout" -->
+                      </button>
+                      </li>
                   </ul>
             </div>
         </nav>
+        
         <div class="col-md-8">
             <div class="card">
                 <h5 class="card-header">Latest Orders</h5>
                 <div class="card-body">
+                    <div class="alert alert-success" role="alert" *ngIf="success"> Your Order is Validate Successfully 
+                    </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -49,7 +48,7 @@
                                 <th scope="col">Customer</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Date</th>
-                                <th scope="col"></th>
+                                <th scope="col">Actions</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -69,13 +68,19 @@
                                    
                                   
                                 <td>
-                                    <button type="button" class="btn btn-link btn-lg btn-rounded text-success" >
+                                    <div [id]="'confirmationAlert' + order.id" class="alert alert-danger" role="alert" style="display: none;">
+                                        Êtes-vous sûr de vouloir supprimer cette commande ?
+                                        <button type="button" class="btn btn-danger" (click)="deleteOrder(order.id)">Confirmer</button>
+                                        <button type="button" class="btn btn-secondary" (click)="cancelDelete(order.id)">Annuler</button>
+                                      </div>
+                                    <button type="button" class="btn btn-link btn-lg btn-rounded text-success"   (click)="validateOrder(order.id)" >
                                         <i class="fas fa-check"></i>
                                       </button>
-                                    <button type="button" class="btn btn-link btn-lg btn-rounded text-danger" >
+                                      
+                                    <button type="button" class="btn btn-link btn-lg btn-rounded text-danger" (click)="deleteOrder(order.id)">
                                         <i class="fas fa-trash"></i>
                                       </button>
-                                               
+                                          
                                 </td>
                               </tr>
                             </tbody>

@@ -30,7 +30,6 @@
   ],
   "orders": [
     {
-      "id": 1,
       "user": {
         "id": 1,
         "nom": "Ilyess",
@@ -70,8 +69,9 @@
         }
       ],
       "totalAmount": 674.6700000000001,
-      "status": "Pending",
-      "orderDate": "2023-12-10T15:47:08.306Z"
+      "status": "Valide",
+      "orderDate": "2023-12-10T16:15:43.243Z",
+      "id": 1
     },
     {
       "user": {
@@ -113,9 +113,44 @@
         }
       ],
       "totalAmount": 674.6700000000001,
-      "status": "Pending",
+      "status": "Valide",
       "orderDate": "2023-12-10T16:15:43.243Z",
       "id": 2
+    },
+    {
+      "user": {
+        "id": 1,
+        "nom": "Ilyess",
+        "prenom": "BenALi",
+        "address": "Douz_Kebili,Tunisie",
+        "numTelephone": "27330975",
+        "role": "client",
+        "email": "ilyess.benali@isima.u-monastir.tn"
+      },
+      "products": [
+        {
+          "id": 1,
+          "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+          "price": 109.95,
+          "category": "men's clothing",
+          "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "quantite": 3
+        },
+        {
+          "id": 2,
+          "title": "Mens Casual Premium Slim Fit T-Shirts ",
+          "price": 22.3,
+          "category": "men's clothing",
+          "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+          "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+          "quantite": 3
+        }
+      ],
+      "totalAmount": 396.75,
+      "status": "Valide",
+      "orderDate": "2023-12-10T19:15:42.811Z",
+      "id": 3
     },
     {
       "user": {
@@ -127,11 +162,56 @@
         "role": "client",
         "email": "aloui.sghair@gmail.com"
       },
-      "products": [],
-      "totalAmount": 0,
+      "products": [
+        {
+          "id": 1,
+          "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+          "price": 109.95,
+          "category": "men's clothing",
+          "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "quantite": 3
+        },
+        {
+          "id": 2,
+          "title": "Mens Casual Premium Slim Fit T-Shirts ",
+          "price": 22.3,
+          "category": "men's clothing",
+          "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+          "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+          "quantite": 3
+        }
+      ],
+      "totalAmount": 396.75,
       "status": "Pending",
-      "orderDate": "2023-12-10T17:01:03.922Z",
-      "id": 3
+      "orderDate": "2023-12-10T19:20:34.226Z",
+      "id": 4
+    },
+    {
+      "user": {
+        "id": 2,
+        "nom": "Mouhamed Aloui ",
+        "prenom": "Sghair",
+        "address": "Rgeb_Sidibouzid,Tunisie",
+        "numTelephone": "50303224",
+        "role": "client",
+        "email": "aloui.sghair@gmail.com"
+      },
+      "products": [
+        {
+          "id": 1,
+          "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+          "price": 109.95,
+          "category": "men's clothing",
+          "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "quantite": 5
+        }
+      ],
+      "totalAmount": 549.75,
+      "status": "Pending",
+      "orderDate": "2023-12-10T19:22:32.748Z",
+      "id": 5
     }
   ]
 }
