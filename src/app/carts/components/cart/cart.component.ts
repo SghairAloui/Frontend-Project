@@ -55,13 +55,6 @@ export class CartComponent implements OnInit{
   constructor(private service:CartsService , private fb: FormBuilder){
   
 
-    /*this.paymentForm = this.fb.group({
-      cardNumber: ['', [Validators.required]],
-      expiryDate: ['', [Validators.required]],
-      cvv: ['', [Validators.required]]
-    });*/
-    
-
   }
   
 
@@ -115,7 +108,7 @@ deleteProduct(index:number) {
 clearCart() {
   this.CartProducts = []
   this.getCartTotal()
-  localStorage.setItem("cart" , JSON.stringify(this.CartProducts))
+//  localStorage.setItem("cart" , JSON.stringify(this.CartProducts))
 }
 
 addCart() {
@@ -153,6 +146,8 @@ addCart() {
 
         console.log('Commande enregistrée avec succès', response);
         // Gérer la réponse ou le comportement après l'enregistrement
+        localStorage.removeItem("cart");
+
       },
       (error) => {
         console.error('Erreur lors de l\'enregistrement de la commande', error);
@@ -176,14 +171,5 @@ addCart() {
 
   showSuccessMessagee(): void {
     this.successs = true;
-    /*if (this.paymentForm.valid) {
-      // Simulate a successful submission
-      this.showSuccessMessage = true;
-      this.showFailureMessage = false;
-    } else {
-      // Simulate a failed submission
-      this.showSuccessMessage = false;
-      this.showFailureMessage = true;
-    }
-  }*/
+ 
   }}

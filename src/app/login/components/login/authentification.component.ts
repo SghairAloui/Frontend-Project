@@ -77,6 +77,8 @@ constructor(private router: Router,private authService: AuthService ,private for
       
     
     else {
+      alert('Échec de connexion'!    );
+
       console.log('Échec de connexion', emailValue);
            }});
 

@@ -1,5 +1,11 @@
 nav {
-    
+  
+ position: absolute;
+    top: 0;
+    right: 0;
+    width: 100% !important;
+    left: 0;
+    z-index: 20;
     background: linear-gradient(to right,#950b0b, #440606);
     color: #fff;
     .content {
@@ -7,14 +13,16 @@ nav {
         justify-content: space-between;
         align-items: center;
         padding: 10px 0;
+         width: 100%; 
         
     }
 }
+ 
 ul {
     list-style: none;
     display: flex;
     justify-content: space-between;
-    width: 30%;
+    width: 40%;
     margin: 0;
     
 

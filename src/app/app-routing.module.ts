@@ -7,6 +7,7 @@ import { HomeComponent } from './home/components/home/home.component';
 import { AuthentificationComponent } from './login/components/login/authentification.component';
 import { DashboradComponent } from './dashborad/dashborad_home/dashborad/dashborad.component';
 import { CustomersComponent } from './dashborad/cutomers/customers/customers.component';
+import { ListOrdersComponent } from './products/components/list_orders_users/list-orders/list-orders.component';
 
 const routes: Routes = [
   { path: 'products', component: AllProductsComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'details/:id', component: ProductsDetailsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'users', component: CustomersComponent },
+  { path: 'listorders', component: ListOrdersComponent },
 
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Redirection par défaut vers login

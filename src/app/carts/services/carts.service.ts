@@ -14,34 +14,48 @@ export class CartsService {
 
   constructor(private http:HttpClient) { }
   private apiUrl = 'http://localhost:3000';
-  private usersEndpoint = '/orders';
+  private ordersEndpoint = '/orders';
   saveOrder(order: Order): Observable<Order> {
-    return this.http.post<Order>(`${this.apiUrl}${this.usersEndpoint}`, order);
+    return this.http.post<Order>(`${this.apiUrl}${this.ordersEndpoint}`, order);
   }
   getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.apiUrl}${this.usersEndpoint}`);
+    return this.http.get<Order[]>(`${this.apiUrl}${this.ordersEndpoint}`);
+  }
+  getOrdersByUser(userId: number): Observable<Order[]> {
+    const userOrdersEndpoint = `/orders/${userId}${this.ordersEndpoint}`;
+    return this.http.get<Order[]>(`${this.apiUrl}${userOrdersEndpoint}`);
   }
   createNewCart(model:any) {
     return this.http.post(environment.baseApi + 'carts' , model )
   }
   deleteOrder(orderId: number): Observable<Order> {
-    const url = `${this.apiUrl}${this.usersEndpoint}/${orderId}`;
+    const url = `${this.apiUrl}${this.ordersEndpoint}/${orderId}`;
     return this.http.delete<Order>(url);
   }
   updateOrder(orderId: number, updatedOrder: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}${this.usersEndpoint}/${orderId}`, updatedOrder);
+    return this.http.put<any>(`${this.apiUrl}${this.ordersEndpoint}/${orderId}`, updatedOrder);
   }
   validateOrder(orderId: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}${this.usersEndpoint}/${orderId}`).pipe(
+    return this.http.get<any>(`${this.apiUrl}${this.ordersEndpoint}/${orderId}`).pipe(
       mergeMap((order: any) => {
         order.status = 'Valide'; // Mettez à jour le statut
-        return this.http.put<any>(`${this.apiUrl}${this.usersEndpoint}/${orderId}`, order);
+        return this.http.put<any>(`${this.apiUrl}${this.ordersEndpoint}/${orderId}`, order);
       }),
       mergeMap((updatedOrder: any) => {
         return this.sendEmail("aloui.sghair@gmail.com"); // Appel à la fonction d'envoi d'e-mail avec l'e-mail de l'utilisateur
       })
     );
   }
+  PayementOrder(orderId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}${this.ordersEndpoint}/${orderId}`).pipe(
+      mergeMap((order: any) => {
+        order.status = 'Paye'; // Change the status to 'Payé'
+        return this.http.put<any>(`${this.apiUrl}${this.ordersEndpoint}/${orderId}`, order);
+      }),
+      
+    );
+  }
+  
 
   // Fonction factice d'envoi d'e-mail (simule l'envoi d'un e-mail à l'utilisateur)
   // Exemple d'envoi d'un e-mail avec emailjs
